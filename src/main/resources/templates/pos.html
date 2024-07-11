@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>POS Invoice</title>
+	<style>
+		/* Global styles */
+* {
+    box-sizing: border-box;
+}
+
+body {
+	background-image: url( https://wallpapers.com/images/featured/zarpq292tmb3whun.jpg);
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+/* Container styles */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    border: 1px solid #ccc;
+	margin-top: 60px;
+}
+
+/* Heading styles */
+h1, h2, h3, h4, h5, h6 {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+    margin: 0;
+}
+
+h1 {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+th {
+    background-color: #eee;
+    font-weight: normal;
+}
+
+/* Total styles */
+.total {
+    font-weight: bold;
+    text-align: right;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+/* Footer styles */
+.footer {
+    margin-top: 20px;
+    text-align: right;
+    font-size: 12px;
+}
+
+/* Generate button styles */
+.generate {
+    background-color: #0084ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    margin-top: 10px;
+    border-style: groove;
+    border-color: #18191a;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    max-width: 200px;
+}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Point of Sale</h1>
+		<div>
+
+        <form th:action="@{pos/pdf}" th:object="${pos}" method =post>
+
+			
+			<h2>Date:<span th:text="${pos.date}"></span></h2>
+			<h2>Time: <span th:text = "${pos.time}" ></span></h2>
+            <h3>Order ID <span th:text="${pos.orderId}"></span></h3>
+            <br/>
+
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<th>Order Item</th>
+					<th>Quantity</th>
+					<th>Price</th>
+					<th>Total</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="orderDish : ${orderDishList}">
+					<td th:text="${orderDish.dish.name}"></td>
+					<td th:text="${orderDish.qty}"></td>
+					<td th:text="${orderDish.dish.sellingPrice}"></td>
+					<td th:text="${orderDish.qty*orderDish.dish.sellingPrice}"></td>                 
+				</tr>
+
+				<tr th:each= "orderDrink : ${orderDrinkList}">
+					<td th:text="${orderDrink.drink.name}"></td>
+					<td th:text="${orderDrink.qty}"></td>
+					<td th:text="${orderDrink.drink.sellingPrice}"></td>
+					<td th:text="${orderDrink.qty*orderDrink.drink.sellingPrice}"></td>                 
+				</tr>
+			</tbody>
+		</table>
+        <div class="total">
+			<p>sub-Total: <span th:text = "${pos.subTotal}"></span></p>
+		</div>
+
+        <div class="total">
+			<p>GST % 16: <span th:text = "${pos.totalGST}"></span></p>
+		</div>
+
+		<div class="total">
+			<p>Total: <span th:text = "${pos.total_Amount}"></span></p>
+		</div>
+		<div class="footer">
+			<p>POS Invoice | Generated on <span th:text = "${pos.date}"></span>  
+                at <span th:text = "${pos.time}" ></span></p>
+		</div>
+
+		<button class="generate">Generate Invoice</button>
+		<br>
+        <br />
+       <a th:href="@{/manager-dash}" class="back">Back to Dashboard</a>
+		
+    </form>
+	</div>
+
+</body>
+</html>

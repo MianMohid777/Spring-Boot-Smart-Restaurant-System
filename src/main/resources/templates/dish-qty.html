@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>Create Dish</title>
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!----===== Boxicons CSS ===== -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      
+      rel="stylesheet"
+      
+    />
+
+    <style>
+        
+        
+body{
+  background-image: url(https://wallpapercave.com/wp/wp1874191.jpg);
+        background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    top: 0;
+    left: 250px;
+    height: 100vh;
+    width: calc(100% - 250px);
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+    font-family: Arial, sans-serif;
+            font-size: 20px;
+            line-height: 1.5;
+            background-color: #7e7e7e;
+      }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            margin-top: 100px;
+            padding: 20px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            background-color: #f2f2f2;
+        }
+        
+        h1 {
+            margin: 0 auto;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        label {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #000;
+        }
+        
+        input[type="number"] {
+            width: 100px;
+            margin-bottom: 10px;
+        }
+        
+        button.btn-btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav class="container">
+    <h1>Create Dish</h1>
+
+    <form th:action="@{/create/dish/qty}" th:object="${dish}" method="post">
+        <div>
+                    
+                <th:block th:object="${meat}">
+                  <p>Meat selected:   <span th:value="${meat.id}" th:text="${meat.name}"></span> </p>
+                  <input type="number" name="meatQty" th:value="${0}" min=0 required/>
+                </th:block>
+            
+        </div>
+        <div>
+           
+                    
+                <th:block th:object="${oil}">
+                  <p>Cooking Oil selected:   <span th:value="${oil.id}" th:text="${oil.name}"></span> </p>
+                  <input type="number" name="oilQty" th:value="${0}" min=0 required/>
+                </th:block>
+            
+       
+        </div>
+
+
+        <div>
+           
+            <p>Dairy Items Selected</p>  
+            <th:block th:each = "dairy:${dairyList}">
+                
+              
+                <label th:text="${dairy.name}"></label>
+                <input type="number" name="dairyQuantities" th:value="${0}" min=0 required />
+                
+            </th:block>
+        
+   
+       </div>
+
+       <br />
+       <div>
+        
+        <p>Vegetable/Fruit Selected</p>     
+        <th:block th:each = "vege:${vegeList}">
+          
+            <label th:text="${vege.name}"></label>
+            <input type="number" name="vegeQuantities" th:value="${0}" min=0 required />
+         
+        </th:block>
+    
+
+   </div>
+
+   <br />
+
+   <div>
+           
+    <p>Spices Selected</p>            
+    <th:block th:each = "spice:${spiceList}">
+      
+        <label th:text="${spice.name}"></label>
+        <input type="number" name="spiceQuantities" th:value="${0}" min=0 required/>
+      
+    </th:block>
+
+
+</div>
+         
+
+        
+<button type="submit" class="btn-btn-primary">create</button>
+       
+    </form>
+</nav>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Remove Dish</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+            background-color: #7e7e7e;
+        }
+        
+        h2 {
+            margin-top: 30px;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+            font-size: 24px;
+        }
+        
+        p {
+            margin-bottom: 10px;
+        }
+        
+        form {
+            display: inline-block;
+            margin-top: 20px;
+        }
+        
+        button {
+            font-size: 14px;
+            padding: 8px 16px;
+            margin-right: 10px;
+            background-color: #008CBA;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .container{
+            max-width: 400px;
+  margin: 200px auto 0;
+  padding: 20px;
+ 
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: #f2f2f2;
+        }
+        button:hover {
+            background-color: #3e8e41;
+        }
+        
+        button[type="submit"] {
+            background-color: #008CBA;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #0078a5;
+        }
+    </style>
+</head>
+<body>
+    <nav class="container">
+    <h2 >Remove Drink</h2>
+    <p>Are you sure you want to remove the following Drink from Menu ?</p>
+    <p>Name: <span th:text="${drink.name}"></span></p>
+    
+    <form action="/drink/delete/{id}{id=${dish.id}}"  method="post">
+        <input type="hidden" th:name="id" th:value="${drink.id}"/>
+        <button type="submit" name="confirm" value="true">Confirm</button>
+        <button type="submit" name="confirm" value="false">Cancel</button>
+    </form>
+</nav>
+</body>
+</html>

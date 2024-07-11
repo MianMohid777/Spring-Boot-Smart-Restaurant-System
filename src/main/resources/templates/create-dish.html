@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+
+    <!----===== Boxicons CSS ===== -->
+    <link
+            href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+            rel="stylesheet"
+    />
+    <title>Create Dish</title>
+
+
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Poppins', sans-serif;
+}
+
+:root{
+/* ===== Colors ===== */
+--body-color: #E4E9F7;
+--sidebar-color: #2e2f32;
+--primary-color: #ffffff;
+--primary-color-light: #F6F5FF;
+--toggle-color: #DDD;
+--text-color: #ffffff;
+
+/* ====== Transition ====== */
+--tran-03: all 0.2s ease;
+--tran-03: all 0.3s ease;
+--tran-04: all 0.3s ease;
+--tran-05: all 0.3s ease;
+}
+
+body{
+min-height: 100vh;
+background-color: var(--body-color);
+transition: var(--tran-05);
+}
+
+
+/* ===== Sidebar ===== */
+.sidebar{
+position: fixed;
+top: 0;
+left: 0;
+height: 100%;
+width: 250px;
+padding: 10px 14px;
+background: var(--sidebar-color);
+transition: var(--tran-05);
+z-index: 100;  
+}
+
+/* ===== Reusable code - Here ===== */
+.sidebar li{
+height: 50px;
+list-style: none;
+display: flex;
+align-items: center;
+margin-top: 10px;
+}
+
+.sidebar header .image,
+.sidebar .icon{
+min-width: 60px;
+border-radius: 6px;
+}
+
+.sidebar .icon{
+min-width: 60px;
+border-radius: 6px;
+height: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 20px;
+}
+
+.sidebar .text,
+.sidebar .icon{
+color: var(--text-color);
+transition: var(--tran-03);
+}
+
+.sidebar .text{
+font-size: 17px;
+font-weight: 500;
+white-space: nowrap;
+opacity: 1;
+}
+
+/* =========================== */
+
+.sidebar header{
+position: relative;
+}
+
+.sidebar header .image-text{
+display: flex;
+align-items: center;
+}
+.sidebar header .logo-text{
+
+display: flex;
+flex-direction: column;
+
+}
+header .image-text .name {
+margin-top: 2px;
+font-size: 18px;
+font-weight: 600;
+}
+
+header .image-text .profession{
+font-size: 16px;
+margin-top: -2px;
+display: block;
+}
+
+.sidebar header .image{
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.sidebar header .image img{
+width: 40px;
+border-radius: 6px;
+}
+
+
+.sidebar .menu{
+margin-top: 40px;
+}
+
+
+.sidebar li a{
+list-style: none;
+height: 100%;
+background-color: transparent;
+display: flex;
+align-items: center;
+height: 100%;
+width: 100%;
+border-radius: 6px;
+text-decoration: none;
+transition: var(--tran-03);
+}
+
+.sidebar li a:hover{
+background-color: var(--primary-color);
+}
+.sidebar li a:hover .icon,
+.sidebar li a:hover .text{
+color: var(--sidebar-color);
+}
+
+
+
+
+.dropdown:hover .dropdown-content {display: block;}
+body {
+    background-image: url(https://wallpapercave.com/wp/wp1874191.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: absolute;
+    top: 0;
+    top: 0;
+    left: 250px;
+    height: 100vh;
+    width: calc(100% - 400px);
+    background-color: #ffffff;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    margin: 20px;
+      padding: 10px;
+      background-color: white;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+      
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 200px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    box-sizing: border-box;
+    margin-right: 10px;
+}
+
+select {
+    width: 220px;
+   
+}
+.a1 {
+        margin-left: 60px;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        }
+div {
+    margin-bottom: 20px;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+    margin-left :10px;
+}
+
+button {
+    display: block;
+    margin: auto;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #4CAF50;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3e8e41;
+}
+
+button.b1 {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+        </style>
+    </head>
+    
+</head>
+<body>
+  <nav class="sidebar close">
+    <header>
+      <div class="image-text">
+        <span class="image">
+          <!--<img src="logo.png" alt="">-->
+        </span>
+
+        <div class="text logo-text">
+          <span class="name">Menu</span>
+         
+        </div>
+      </div>
+
+      
+    </header>
+
+  
+
+        <ul class="menu-links">
+          <li class="nav-link">
+            <a th:href="@{/manager-dash}">
+              <i class="bx bx-home-alt icon"></i>
+              <span class="text nav-text">Dashboard</span>
+            </a>
+          </li>
+
+
+          <li class="nav-link">
+            <a th:href="@{/inv}">
+              <i class='bx bx-bolt-circle icon'></i>
+              <span class="text nav-text">Manage Inventory</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a th:href="@{/menu}">
+              <i class='bx bx-bolt-circle icon'></i>
+              <span class="text nav-text">Manage Menu</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a th:href="@{/create-dish}">
+              <i class='bx bx-bolt-circle icon'></i>
+              <span class="text nav-text">Create Dish</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a th:href="@{/build-order}">
+              <i class='bx bxs-bank icon'></i>
+              <span class="text nav-text">Build Order</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a th:href="@{/pos}">
+              <i class='bx bxs-receipt icon' ></i>
+              <span class="text nav-text">Generate POS</span>
+            </a>
+          </li>
+        
+    
+      <div class="bottom-content">
+        <li class="">
+          <a th:href="@{/login}">
+            <i class="bx bx-log-out icon"></i>
+            <span class="text nav-text">Logout</span>
+          </a>
+        </li>
+      </div>
+    </div>
+  </nav>  
+      
+    
+            
+      <nav class="a1">
+    <form th:action="@{/create/dish/select}" th:object="${dish}" method="post">
+        <h1>Create Dish</h1>
+        <div>
+            <label for="name">Dish Name</label>
+            <input type="text" th:name = "name" th:field="*{name}" />
+            
+            <label for="cp">Cost Price:</label>
+            <input type="number" th:name="cp" th:field="*{costPrice}"/>
+
+            <label for="sp">Selling Price:</label>
+            <input type="number" th:name="sp" th:field="*{sellingPrice}"/>
+        </div>
+        <br/>
+        <div>
+            <label for="meat">Meat:</label>
+            <select id="meat" name="meatId">
+                <option value="meatId" disabled selected>-- Select Meat --</option>
+                <th:block th:each="m : ${meats}">
+                    <option th:value="${m.id}" th:text="${m.name}"></option>
+                </th:block>
+            </select>
+        </div>
+        <div>
+            <label for="oil">Cooking Oil:</label>
+            <select id="oilId" name="oilId">
+              <option value="oilId" disabled selected>-- Select Cooking Oil --</option>
+              <th:block th:each="oil : ${oils}">
+                <option th:value="${oil.id}" th:text="${oil.name}"></option>
+              </th:block>
+            </select>
+          </div>
+         
+
+        <label for="dairys">Dairy:</label>
+        <br />
+        <th:block th:each = "dairy , iterStat: ${dairys}">
+            <input type="checkbox" name="dairyIds" th:value="${dairy.id}" id="${'dairy-' + iterStat.index}" />
+            <label th:for="${'dairy-' + iterStat.index}" th:text="${dairy.name}"></label>
+           
+    
+        <br><br>
+        </th:block>
+       
+         <div> 
+            <label for="veges">Vegetable:</label>
+            <br />
+            <th:block th:each = "vege , iterStat: ${veges}">
+                <input type="checkbox" name="vegetableIds" th:value="${vege.id}" id="${'vege-' + iterStat.index}" />
+                <label th:for="${'vege-' + iterStat.index}" th:text="${vege.name}"></label>
+               
+            
+            <br><br>
+            </th:block>
+        </div>
+
+        <br />
+        <br />
+        <br />
+
+        <div>
+            <label for="spices">Spice:</label>
+            <br />
+            <th:block th:each = "spice , iterStat: ${spices}">
+                <input type="checkbox" name="spiceIds" th:value="${spice.id}" id="${'spice-' + iterStat.index}" />
+                <label th:for="${'spice-' + iterStat.index}" th:text="${spice.name}"></label>
+                
+            
+            <br><br>
+            </th:block>
+        </div> 
+
+        <button  type="submit" class="b1">Next</button>
+    </form>
+</nav>
+</body>
+</html>

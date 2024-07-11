@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>Drinks Inventory</title>
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!----===== Boxicons CSS ===== -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      
+      rel="stylesheet"
+      
+    />
+    
+    
+    <!--<title>Dashboard Sidebar Menu</title>-->
+      <style>
+        
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root{
+    /* ===== Colors ===== */
+    --body-color: #E4E9F7;
+    --sidebar-color: #2e2f32;
+    --primary-color: #ffffff;
+    --primary-color-light: #F6F5FF;
+    --toggle-color: #DDD;
+    --text-color: #ffffff;
+
+    /* ====== Transition ====== */
+    --tran-03: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.3s ease;
+    --tran-05: all 0.3s ease;
+}
+
+body{
+    min-height: 100vh;
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+}
+
+
+/* ===== Sidebar ===== */
+ .sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 300px;
+    padding: 10px 14px;
+    background: var(--sidebar-color);
+    transition: var(--tran-05);
+    z-index: 100;  
+}
+
+/* ===== Reusable code - Here ===== */
+.sidebar li{
+    height: 50px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.sidebar header .image,
+.sidebar .icon{
+    min-width: 60px;
+    border-radius: 6px;
+}
+
+.sidebar .icon{
+    min-width: 60px;
+    border-radius: 6px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.sidebar .text,
+.sidebar .icon{
+    color: var(--text-color);
+    transition: var(--tran-03);
+}
+
+.sidebar .text{
+    font-size: 17px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 1;
+}
+
+/* =========================== */
+
+.sidebar header{
+    position: relative;
+}
+
+.sidebar header .image-text{
+    display: flex;
+    align-items: center;
+}
+.sidebar header .logo-text{
+
+    display: flex;
+    flex-direction: column;
+
+}
+header .image-text .name {
+    margin-top: 2px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+header .image-text .profession{
+    font-size: 16px;
+    margin-top: -2px;
+    display: block;
+}
+
+.sidebar header .image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar header .image img{
+    width: 40px;
+    border-radius: 6px;
+}
+
+
+.sidebar .menu{
+    margin-top: 40px;
+}
+
+
+.sidebar li a{
+    list-style: none;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: var(--tran-03);
+}
+
+.sidebar li a:hover{
+    background-color: var(--primary-color);
+}
+.sidebar li a:hover .icon,
+.sidebar li a:hover .text{
+    color: var(--sidebar-color);
+}
+
+.home{
+    position: absolute;
+    top: 0;
+    top: 0;
+    left: 250px;
+    height: 100vh;
+    width: calc(100% - 250px);
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+}
+.home .text{
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--text-color);
+    padding: 12px 60px;
+}
+
+
+.dropbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: right;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+    
+       
+.dropdown:hover .dropdown-content {display: block;}
+        
+        
+        body{
+        background-image: url(https://wallpapercave.com/wp/wp1874191.jpg);
+        background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    top: 0;
+    left: 250px;
+    height: 100vh;
+    width: calc(100% - 250px);
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+      }
+
+      .container {
+  max-width: 400px;
+  margin: 200px auto 0;
+  padding: 20px;
+ 
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: #f2f2f2;
+
+}
+
+.container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.container label {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #000;
+}
+
+.container select {
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 20px;
+  width: 100%;
+  border-bottom: 3px solid #0f0e0e;
+}
+
+.container button.next {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+
+        </style>
+  </head>
+   
+  <body>
+    <nav class="sidebar close">
+      <header>
+        <div class="image-text">
+          <span class="image">
+            <!-- <img src="logo.png" alt="">-->
+          </span>
+          <div class="text logo-text">
+            <span class="name">Inventory</span>
+          </div>
+        </div>
+        <i class="bx bx-chevron-right toggle"></i>
+      </header>
+
+      <ul class="menu-links">
+        <li class="nav-link">
+          
+            <i class="bx bx-home-alt icon"></i>
+            <span class="text nav-text">Dashboard</span>
+          
+        </li>
+        <li class="nav-link">
+          <a th:href="@{/inv/meat}">
+            <i class='bx bx-briefcase icon'></i>
+            <span class="text nav-text">Meat Inventory</span>
+          </a>
+        </li>
+      
+        <li class="nav-link">
+          <a th:href="@{/inv/dairy}">
+            <i class='bx bx-user-circle icon'></i>
+            <span class="text nav-text">Dairy Inventory</span>
+          </a>
+        </li>
+        
+        <li class="nav-link">
+            <a th:href="@{/inv/vege}">
+              <i class='bx bx-user-circle icon'></i>
+              <span class="text nav-text">Fruit & Vegetable Inventory</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a th:href="@{/inv/spice}">
+              <i class='bx bx-user-circle icon'></i>
+              <span class="text nav-text">Spice Inventory</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a th:href="@{/inv/oil}">
+              <i class='bx bx-user-circle icon'></i>
+              <span class="text nav-text">Cooking Oil Inventory</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a th:href="@{/inv/drink}">
+              <i class='bx bx-user-circle icon'></i>
+              <span class="text nav-text">Drinks Inventory</span>
+            </a>
+          </li>
+
+          <div class="bottom-content">
+            <li class="">
+              <a th:href="@{/login}">
+                <i class="bx bx-log-out icon"></i>
+                <span class="text nav-text">Logout</span>
+              </a>
+            </li>
+
+      <div class="toggle-switch">
+              <span class="switch"></span>
+            </div>
+          </li>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      
+        <form th:action="@{/drink/list/}" method="post">
+
+            <div class="dropdown">
+                <select name="id" required>
+                    <option value="" disabled selected>Select a Drink</option>
+                    <option th:each="drink: ${drinks}" th:value="${drink.id}" th:text="${drink.name}"></option>
+                </select>
+            </div>
+            <button type="submit" class="next">Next</button>
+            
+        </form>
+        
+    
+      
+    
+   
+
+    </script>
+  </body>
+</html>

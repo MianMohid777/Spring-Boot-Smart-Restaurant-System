@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Add a Dish</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!----===== Boxicons CSS ===== -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      
+      rel="stylesheet"
+      
+    />
+  </head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+      *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root{
+    /* ===== Colors ===== */
+    --body-color: #E4E9F7;
+    --sidebar-color: #2e2f32;
+    --primary-color: #ffffff;
+    --primary-color-light: #F6F5FF;
+    --toggle-color: #DDD;
+    --text-color: #ffffff;
+
+    /* ====== Transition ====== */
+    --tran-03: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.3s ease;
+    --tran-05: all 0.3s ease;
+}
+
+body{
+    min-height: 100vh;
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+}
+
+
+/* ===== Sidebar ===== */
+ .sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    padding: 10px 14px;
+    background: var(--sidebar-color);
+    transition: var(--tran-05);
+    z-index: 100;  
+}
+
+/* ===== Reusable code - Here ===== */
+.sidebar li{
+    height: 50px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.sidebar header .image,
+.sidebar .icon{
+    min-width: 60px;
+    border-radius: 6px;
+}
+
+.sidebar .icon{
+    min-width: 60px;
+    border-radius: 6px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.sidebar .text,
+.sidebar .icon{
+    color: var(--text-color);
+    transition: var(--tran-03);
+}
+
+.sidebar .text{
+    font-size: 17px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 1;
+}
+
+/* =========================== */
+
+.sidebar header{
+    position: relative;
+}
+
+.sidebar header .image-text{
+    display: flex;
+    align-items: center;
+}
+.sidebar header .logo-text{
+
+    display: flex;
+    flex-direction: column;
+
+}
+header .image-text .name {
+    margin-top: 2px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+header .image-text .profession{
+    font-size: 16px;
+    margin-top: -2px;
+    display: block;
+}
+
+.sidebar header .image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar header .image img{
+    width: 40px;
+    border-radius: 6px;
+}
+
+
+.sidebar .menu{
+    margin-top: 40px;
+}
+
+
+.sidebar li a{
+    list-style: none;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: var(--tran-03);
+}
+
+.sidebar li a:hover{
+    background-color: var(--primary-color);
+}
+.sidebar li a:hover .icon,
+.sidebar li a:hover .text{
+    color: var(--sidebar-color);
+}
+
+
+    
+      
+.dropdown:hover .dropdown-content {display: block;}
+      body{
+        background-image: url(https://wallpapercave.com/wp/wp1874191.jpg);
+        background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    top: 0;
+    left: 250px;
+    height: 100vh;
+    width: calc(100% - 250px);
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+      }
+
+      .container {
+  max-width: 400px;
+  margin: 200px auto 0;
+  padding: 20px;
+ 
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: #f2f2f2;
+
+}
+
+.container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.container label {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #000;
+}
+
+.container select {
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 20px;
+  width: 100%;
+  border-bottom: 3px solid #0f0e0e;
+}
+
+.container button.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+
+</style>
+<body>
+  <nav class="sidebar close">
+    <header>
+      <div class="image-text">
+        <span class="image">
+          <!--<img src="logo.png" alt="">-->
+        </span>
+
+        <div class="text logo-text">
+          <span class="name">Menu</span>
+         
+        </div>
+      </div>
+
+      
+    </header>
+
+  
+
+    <ul class="menu-links">
+    <li class="nav-link">
+      <a href="@{/manager-dash}">
+        <i class="bx bx-home-alt icon"></i>
+        <span class="text nav-text">Dashboard</span>
+      </a>
+    </li>
+
+
+    <li class="nav-link">
+      <a th:href="@{/menu}">
+        <i class='bx bx-bolt-circle icon'></i>
+        <span class="text nav-text">Manage Menu</span>
+      </a>
+    </li>
+
+    <li class="nav-link">
+      <a th:href="@{/create-dish}">
+        <i class='bx bx-bolt-circle icon'></i>
+        <span class="text nav-text">Create Dish</span>
+      </a>
+    </li>
+
+    <li class="nav-link">
+      <a th:href="@{/build-order}">
+        <i class='bx bxs-bank icon'></i>
+        <span class="text nav-text">Build Order</span>
+      </a>
+    </li>
+
+    <li class="nav-link">
+      <a th:href="@{/pos}">
+        <i class='bx bxs-receipt icon' ></i>
+        <span class="text nav-text">Generate POS</span>
+      </a>
+    </li>
+  
+
+<div class="bottom-content">
+  <li class="">
+    <a th:href="@{/login}">
+      <i class="bx bx-log-out icon"></i>
+      <span class="text nav-text">Logout</span>
+    </a>
+  </li>
+</div>
+</div>
+</nav>
+  <li class="nav-link">
+
+
+  <div class="container">
+
+    <form th:action="@{/menu/add/dish-drink}" method="post">
+  
+        <label for="dishId">Dish</label>
+        <select id="dishId" name="dishId" required>
+            <option value="dishId" disabled selected>Select Dish</option>
+            <option th:each="dish: ${dishes}" th:value="${dish.id}" th:text="${dish.name}"></option>
+            <option value = "">None</option>
+        </select>
+    
+      
+        <label for="drinkId">Drinks</label>
+        <select id="drinkId" name="drinkId" required>
+            <option value="drinkId" disabled selected>Select Drink</option>
+            <option th:each="drink: ${drinks}" th:value="${drink.id}" th:text="${drink.name}"></option>
+            <option value = "" >None</option>
+        </select>
+      
+        <button type="submit" class="btn-primary">Add</button>
+    </form>
+    
+  </div>
+  </body>		
+</html>
+
